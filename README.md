@@ -44,3 +44,9 @@
   - 시나리오 진행에 대한 결과 명시, 검증
 - 어떤 환경에서(Given) 어떤 행동을 진행했을 때(When) 어떤 상태 변화가 일어난다(Then).
   - DisplayName에 명확하게 작성할 수 있다.
+
+## 주로 사용하는 검증 방법
+- assertThat().hasSize(1)
+- assertThat().isEqualTo("A")
+- assertThatThrownBy().isInstanceOf(IllegalArgumentException.class).hasMessage("A")
+- assertThat().hasSize(2).extracting("name", "price").containsExactlyInAnyOrder(tuple("A", 1000), tuple("B", 2000))
