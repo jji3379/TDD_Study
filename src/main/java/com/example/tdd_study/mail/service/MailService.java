@@ -1,0 +1,38 @@
+package com.example.tdd_study.mail.service;
+
+import com.example.tdd_study.mail.domain.entity.MailSendHistory;
+import com.example.tdd_study.mail.domain.repository.MailSendClient;
+import com.example.tdd_study.mail.domain.repository.MailSendHistoryRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+@RequiredArgsConstructor
+@Service
+public class MailService {
+
+    private final MailSendClient mailSendClient;
+    private final MailSendHistoryRepository mailSendHistoryRepository;
+
+    public boolean sendMail(String fromEmail, String toEmail, String subject, String content) {
+        boolean result = mailSendClient.sendEmail(fromEmail, toEmail, subject, content);
+        if (result) {
+            mailSendHistoryRepository.save(MailSendHistory.builder()
+                    .fromEmail(fromEmail)
+                    .toEmail(toEmail)
+                    .subject(subject)
+                    .content(content)
+                    .build()
+            );
+
+            mailSendClient.a();
+            mailSendClient.b();
+            mailSendClient.c();
+
+            return true;
+        }
+
+        return false;
+    }
+
+}
+

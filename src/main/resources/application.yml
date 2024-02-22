@@ -12,7 +12,6 @@ spring:
     hibernate:
       ddl-auto: none
 
-
 ---
 spring:
   config:
@@ -26,7 +25,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
-    defer-datasource-initialization: true
+    defer-datasource-initialization: true # (2.5~) Hibernate 초기화 이후 data.sql 실행
 
   h2:
     console:
@@ -37,11 +36,6 @@ spring:
   config:
     activate:
       on-profile: test
-
-  datasource:
-    url: jdbc:mysql://localhost:3306/cafeKioskApplication
-    username: root
-    password: root
 
   jpa:
     hibernate:

@@ -1,14 +1,15 @@
 package com.example.tdd_study.product.domain.entity;
 
-import com.example.tdd_study.util.entity.BaseEntity;
+import com.example.tdd_study.config.entity.BaseEntity;
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
 @Entity
-@NoArgsConstructor(access = lombok.AccessLevel.PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Product extends BaseEntity {
 
     @Id
@@ -21,17 +22,17 @@ public class Product extends BaseEntity {
     private ProductType type;
 
     @Enumerated(EnumType.STRING)
-    private ProductSellingType sellingType;
+    private ProductSellingStatus sellingStatus;
 
     private String name;
 
     private int price;
 
     @Builder
-    private Product(String productNumber, ProductType type, ProductSellingType sellingType, String name, int price) {
+    private Product(String productNumber, ProductType type, ProductSellingStatus sellingStatus, String name, int price) {
         this.productNumber = productNumber;
         this.type = type;
-        this.sellingType = sellingType;
+        this.sellingStatus = sellingStatus;
         this.name = name;
         this.price = price;
     }

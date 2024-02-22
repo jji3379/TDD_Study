@@ -1,4 +1,4 @@
-package com.example.tdd_study.util.entity;
+package com.example.tdd_study.config.entity;
 
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
